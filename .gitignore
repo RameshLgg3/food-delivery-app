@@ -1,4 +1,6 @@
 api-gateway-service/node_modules/
 auth-service/node_modules/
 customers-service/node_modules/
-
+**/node_modules/
+*.log
+**/prisma/migrations
