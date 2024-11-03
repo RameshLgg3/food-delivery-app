@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const authRepository = require("./repository");
 
 exports.register = async (userData) => {
-    const { email, password } = userData;
+    const { email, password, userType, mobileNumber } = userData;
 
     // Check if user already exists
     const existingUser = await authRepository.findUserByEmail(email);
@@ -18,6 +18,8 @@ exports.register = async (userData) => {
     const user = await authRepository.createUser({
         email,
         password: hashedPassword,
+        userType,
+        mobileNumber,
     });
 
     return { status: 201, message: "User registered successfully", user };
@@ -42,9 +44,9 @@ exports.login = async (userData) => {
 
     // Generate JWT token
     const token = jwt.sign(
-        { id: user.id, email: user.email },
+        { id: user.id, email: user.email, userType: user.userType },
         process.env.JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "100000h" }
     );
 
     return { status: 200, message: "Login successful", token }; // Return the token

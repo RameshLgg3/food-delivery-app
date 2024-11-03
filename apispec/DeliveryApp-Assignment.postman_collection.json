@@ -1,0 +1,1152 @@
+{
+	"info": {
+		"_postman_id": "98f682d3-8454-4525-a24c-2c8b8f90ddcf",
+		"name": "DeliveryApp-Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37894449"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"tittu@email.com\",\n    \"name\": \"Tittu\",\n    \"password\": \"password\",\n    \"mobileNumber\": \"9999999999\",\n    \"userType\":\"deliveryagent\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"tittu@email.com\",\n    \"name\": \"Tittu\",\n    \"password\": \"password\",\n    \"mobileNumber\": \"9999999999\",\n    \"userType\":\"deliveryagent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a-nMoFx54+czTntmSLXl3mqIsZV4A\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:02:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User registered successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"tittu@email.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"tittu@email.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "249"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f9-lqvCdXP0PFfVrkEVfk4u3xt9VGc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:03:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successful\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzA1NDE3OTAsImV4cCI6MjA5MDU0MTc5MH0.dpoyQKYfOBGkH5y2hDpscjajlcwTVqnH487h6CfhDcc\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Delivery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\" : \"O1\",\n    \"userid\" : 2,\n    \"deliveryPartnerId\": 1,\n    \"deliverySla\": 30,\n    \"destination\": \"17.3843222,78.3253527\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delivery",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Delivery",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\" : \"O1\",\n    \"userid\" : 2,\n    \"deliveryPartnerId\": 1,\n    \"deliverySla\": 30,\n    \"destination\": \"17.3843222,78.3253527\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delivery",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "359"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"167-/mxdXrG62VF0wZLxMCp9dGuFlSY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:03:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully created the delivery details\",\n    \"data\": {\n        \"id\": \"cm2zzwts30000r7jqibzqhoqu\",\n        \"orderId\": \"O1\",\n        \"userid\": 2,\n        \"deliveryPartnerId\": 1,\n        \"deliverySla\": 30,\n        \"restaurant\": \"\",\n        \"destination\": \"17.3843222,78.3253527\",\n        \"status\": false,\n        \"disputeStatus\": false,\n        \"createdAt\": \"2024-11-02T10:03:29.091Z\",\n        \"updatedAt\": \"2024-11-02T10:03:29.091Z\",\n        \"userId\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Delivery by DeliveryId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/delivery/:deliveryId",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery",
+						":deliveryId"
+					],
+					"variable": [
+						{
+							"key": "deliveryId",
+							"value": "cm2zzwts30000r7jqibzqhoqu"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Delivery by DeliveryId",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/delivery/:deliveryId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery",
+								":deliveryId"
+							],
+							"variable": [
+								{
+									"key": "deliveryId",
+									"value": "cm2zzwts30000r7jqibzqhoqu"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "378"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"17a-xSLgUvob8bT0C+LkhvyKDIyCoBg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:03:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully retrieved the data\",\n    \"data\": {\n        \"id\": \"cm2zzwts30000r7jqibzqhoqu\",\n        \"orderId\": \"O1\",\n        \"userid\": 2,\n        \"deliveryPartnerId\": 1,\n        \"deliverySla\": 30,\n        \"restaurant\": \"\",\n        \"destination\": \"17.3843222,78.3253527\",\n        \"status\": false,\n        \"disputeStatus\": false,\n        \"createdAt\": \"2024-11-02T10:03:29.091Z\",\n        \"updatedAt\": \"2024-11-02T10:03:29.091Z\",\n        \"userId\": null,\n        \"rating\": null,\n        \"dispute\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Delivery by DeliveryId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deliverySla\": 32,\n    \"status\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delivery/:deliveryId",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery",
+						":deliveryId"
+					],
+					"variable": [
+						{
+							"key": "deliveryId",
+							"value": "cm2zzwts30000r7jqibzqhoqu"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Delivery by DeliveryId",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deliverySla\": 32,\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delivery/:deliveryId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery",
+								":deliveryId"
+							],
+							"variable": [
+								{
+									"key": "deliveryId",
+									"value": "cm2zzwts30000r7jqibzqhoqu"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "344"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"158-H3TzDUoQkMDlUB+ZetE7ZJ+Eefg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:10:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully updated the delivery details\",\n    \"data\": {\n        \"id\": \"cm2zzwts30000r7jqibzqhoqu\",\n        \"orderId\": \"O1\",\n        \"userid\": 2,\n        \"deliveryPartnerId\": 1,\n        \"deliverySla\": 32,\n        \"restaurant\": \"\",\n        \"destination\": \"17.3843222,78.3253527\",\n        \"status\": true,\n        \"disputeStatus\": false,\n        \"createdAt\": \"2024-11-02T10:03:29.091Z\",\n        \"updatedAt\": \"2024-11-02T10:03:29.091Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Rating - Order / Delviery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rating\": 5,\n    \"message\": \"Delivery was awesome!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delivery/review/:deliveryId",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery",
+						"review",
+						":deliveryId"
+					],
+					"variable": [
+						{
+							"key": "deliveryId",
+							"value": "cm2zzwts30000r7jqibzqhoqu"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Rating - Order / Delviery",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 5,\n    \"message\": \"Delivery was awesome!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delivery/review/:deliveryId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery",
+								"review",
+								":deliveryId"
+							],
+							"variable": [
+								{
+									"key": "deliveryId",
+									"value": "cm2zzwts30000r7jqibzqhoqu"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "62"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3e-24BR9B5nlWmLE8t2AdXVNamfVl8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:10:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully reviewed the delivery\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Dispute - Order / Delivery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Order got spoiled\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delivery/dispute/:deliveryId",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery",
+						"dispute",
+						":deliveryId"
+					],
+					"variable": [
+						{
+							"key": "deliveryId",
+							"value": "cm2zzwts30000r7jqibzqhoqu"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dispute - Order / Delivery",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"Order got spoiled\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delivery/dispute/:deliveryId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery",
+								"dispute",
+								":deliveryId"
+							],
+							"variable": [
+								{
+									"key": "deliveryId",
+									"value": "cm2zzwts30000r7jqibzqhoqu"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "308"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"134-w/cyGQxAhpFVOFy92gB0+S+jofE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:11:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully raised dispute the delivery\",\n    \"data\": {\n        \"id\": \"cm3006qka0003gyf9cf53flw3\",\n        \"message\": \"Order got spoiled\",\n        \"resolution\": \"\",\n        \"status\": false,\n        \"type\": \"delivery\",\n        \"createdAt\": \"2024-11-02T10:11:11.483Z\",\n        \"updatedAt\": \"2024-11-02T10:11:11.483Z\",\n        \"deliveryId\": \"cm2zzwts30000r7jqibzqhoqu\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Dispute Update - Order / Delivery",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resolution\": \"Re-opened\",\n    \"status\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delivery/dispute/:deliveryid/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delivery",
+						"dispute",
+						":deliveryid",
+						"update"
+					],
+					"variable": [
+						{
+							"key": "deliveryid",
+							"value": "cm2zzwts30000r7jqibzqhoqu"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dispute Update - Order / Delivery",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resolution\": \"Re-opened\",\n    \"status\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delivery/dispute/:deliveryId/update",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delivery",
+								"dispute",
+								":deliveryId",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "deliveryId",
+									"value": "cm2zzwts30000r7jqibzqhoqu"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "318"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13e-iMtSyFA7NrYByhuflCnRy+9cWjI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:11:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully updated the delivery details\",\n    \"data\": {\n        \"id\": \"cm3006qka0003gyf9cf53flw3\",\n        \"message\": \"Order got spoiled\",\n        \"resolution\": \"Re-opened\",\n        \"status\": false,\n        \"type\": \"delivery\",\n        \"createdAt\": \"2024-11-02T10:11:11.483Z\",\n        \"updatedAt\": \"2024-11-02T10:11:11.483Z\",\n        \"deliveryId\": \"cm2zzwts30000r7jqibzqhoqu\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Location Service - Add / Update Location",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lon\": \"17.388091\",\n    \"lat\": \"78.3391805\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/location",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Location Service - Add / Update Location",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lon\": \"17.388091\",\n    \"lat\": \"78.3391805\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3d-QKXJ2eRXwDmefYP2skIr987cleY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:11:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully updated the location\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Location by Type and Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/location/:type/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location",
+						":type",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "type",
+							"value": "deliveryagent",
+							"description": "can use for tracking order / user / delivery agent"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Location by Type and Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/location/:type/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								":type",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "deliveryagent"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "120"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"78-uNpkxsNZNmn3Vn9tXILVXNp8QQI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:12:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully retrieved the location\",\n    \"data\": [\n        [\n            \"17.38809317350387573\",\n            \"78.33918081326754645\"\n        ]\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Assign Delivery Agent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzAyMTIyNDcsImV4cCI6MjA5MDIxMjI0N30.HRYfoeF9rZ39IXnDSEmXRRi8k5iFolwzUVq7DkB4d1Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 2,\n    \"orderId\": \"1\",\n    \"restaurantId\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/location/assign",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"location",
+						"assign"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Assign Delivery Agent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 2,\n    \"orderId\": \"1\",\n    \"restaurantId\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/location/assign",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"location",
+								"assign"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "104"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"68-gEvfatVPcegJlv1nE+RYx0V3vdQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 10:12:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Successfully assigned the delivery agent\",\n    \"data\": [\n        \"deliveryagent:1\",\n        \"0.8373\"\n    ]\n}"
+				}
+			]
+		}
+	]
+}

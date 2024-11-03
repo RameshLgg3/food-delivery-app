@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String   @default("")
+  mobileNumber String
+  password     String
+  userType     String   @default("user") // user, restaurant, deliveryagent
+  createdAt    DateTime @default(now())
+}
+
+model delivery {
+  id                String   @unique @default(cuid())
+  orderId           String
+  userid            Int
+  deliveryPartnerId Int
+  deliverySla       Int      @default(30)
+  restaurant        String   @default("")
+  destination       String
+  status            Boolean  @default(false)
+  disputeStatus     Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now()) @updatedAt
+  dispute           dispute?
+  rating            rating?
+}
+
+model dispute {
+  id         String   @unique @default(cuid())
+  message    String
+  resolution String   @default("")
+  status     Boolean  @default(false)
+  type       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+  delivery   delivery @relation(fields: [deliveryId], references: [id], onDelete: Cascade)
+  deliveryId String   @unique
+}
+
+model rating {
+  id         String   @unique @default(cuid())
+  rating     Int      @default(0)
+  message    String
+  type       String
+  createdAt  DateTime @default(now())
+  delivery   delivery @relation(fields: [deliveryId], references: [id], onDelete: Cascade)
+  deliveryId String   @unique
+}
