@@ -1,0 +1,16 @@
+{
+  "name": "resturent-owner-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+     "test": "test",
+      "start": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
