@@ -1,12 +1,7 @@
-const express = require("express");
-const app = express();
-const customerRoutes = require("./customer/routes");
+const app = require("./app");
 
-const PORT = process.env.PORT || 5001;
-
-app.use(express.json());
-app.use("/api", customerRoutes); // All customer routes will be prefixed with /api
+const PORT = process.env.PORT || 5001; // Use a different port for restaurant service
 
 app.listen(PORT, () => {
-    console.log(`Customer Service is running on port ${PORT}`);
+    console.log(`Customer Service running on port ${PORT}`);
 });

@@ -1,0 +1,21 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Set this in your .env file
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model order {
+  id             Int      @id @default(autoincrement())
+  user_id        Int
+  order_number   String   @unique
+  amount         Float
+  status         String
+  delivery_status String
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  // Add additional fields or relationships as needed
+}

@@ -1,7 +1,11 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const { authenticateToken } = require("./middleware"); // Import the JWT middleware
+const { authenticateToken, authorizeRoles } = require("./middleware"); // Import the JWT middleware
+const fetch = require("node-fetch");
+
 const router = express.Router();
+
+router.use(authenticateToken);
 
 // Auth service proxy (assuming auth-service runs on port 4000)
 router.use(
@@ -12,28 +16,33 @@ router.use(
     })
 );
 
-// Customer service proxy with JWT authentication
-router.use("/customers", authenticateToken, (req, res) => {
-    // Make a request to the customer service
-    const options = {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${req.headers.authorization.split(" ")[1]}`, // Pass the token to the customer service
-        },
-        // Adjust the URL to match your customer service address
-        url: "http://localhost:5001/api/customers",
-    };
+// Role-based authorization for customer service routes
+router.get(
+    "/customers",
+    authorizeRoles("CUSTOMER"), // Only allow specific roles
+    async (req, res) => {
+        const url = `http://localhost:5001/api/customers`;
+        const options = {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${
+                    req.headers.authorization.split(" ")[1]
+                }`,
+            },
+        };
 
-    fetch(options.url, { method: options.method, headers: options.headers })
-        .then((response) => response.json())
-        .then((data) => res.json(data))
-        .catch((error) => {
+        try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+            res.status(response.status).json(data);
+        } catch (error) {
             console.error("Error fetching from customer service:", error);
-            res.sendStatus(500);
-        });
-});
+            res.status(500).json({ message: "Internal Server Error" });
+        }
+    }
+);
 
-router.get("/", authenticateToken, (req, res) => {
+router.get("/", (req, res) => {
     res.send("Gateway is up and running");
 });
 
