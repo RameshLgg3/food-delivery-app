@@ -80,6 +80,7 @@ Ensure that the API handles CORS requests to enable cross-origin access for web 
 
 -   Node.js
 -   PostgreSQL
+-   Postman
 
 ## Deployment
 
