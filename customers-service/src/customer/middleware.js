@@ -25,7 +25,6 @@ const authenticateToken = (req, res, next) => {
 // Role-based authorization middleware
 function authorizeRoles(...roles) {
     return (req, res, next) => {
-        console.log(...roles);
         const role = req.user.role;
 
         if (!roles.includes(role)) {
