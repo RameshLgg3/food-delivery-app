@@ -94,6 +94,10 @@ https://api-based-products-assignment-2-group-1.postman.co/workspace/807c57bb-f3
 
 ## Architecture
 
+## Security
+
+Services and APIs are secured by JWT and Role Based Access Control(RBAC)
+
 ## Team
 
 -   KOLAMALA RAMESH - 2023mt93294@wilp.bits-pilani.ac.in
