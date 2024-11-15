@@ -5,6 +5,7 @@ exports.createDeliveryValidation = (data) => {
         orderId: Joi.string().required(),
         userid: Joi.number().required(),
         deliveryPartnerId: Joi.number().required(),
+        restaurantId: Joi.number().required(),
         deliverySla: Joi.number(),
         destination: Joi.string().required(),
     });
@@ -67,7 +68,7 @@ exports.deliveryAssignRequest = (data) => {
     const schema = Joi.object({
         userId: Joi.number().required(),
         orderId: Joi.string().required(),
-        restaurantId: Joi.string().required()
+        restaurantId: Joi.number().required()
     });
     return schema.validate(data);
 };

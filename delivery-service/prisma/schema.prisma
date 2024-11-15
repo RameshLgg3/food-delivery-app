@@ -13,23 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  name         String   @default("")
-  mobileNumber String
-  password     String
-  userType     String   @default("user") // user, restaurant, deliveryagent
-  createdAt    DateTime @default(now())
-}
-
 model delivery {
   id                String   @unique @default(cuid())
   orderId           String
   userid            Int
   deliveryPartnerId Int
   deliverySla       Int      @default(30)
-  restaurant        String   @default("")
+  restaurantId      Int
+  // restaurant        String   @default("")
   destination       String
   status            Boolean  @default(false)
   disputeStatus     Boolean  @default(false)
