@@ -1,5 +1,12 @@
 # BITS Api Based Products Assignment 2 - Group 1
 
+## Team
+
+-   KOLAMALA RAMESH - 2023mt93294@wilp.bits-pilani.ac.in
+-   UJJWAL DEY - 2023mt93290@wilp.bits-pilani.ac.in
+-   MOHD ILYAS AHMED - 2023mt93044@wilp.bits-pilani.ac.in
+-   TITTU VARGHESE - 2023mt93398@wilp.bits-pilani.ac.in
+
 # Design and Development of an API product for a Food Delivery System
 
 ## Objective
@@ -99,10 +106,3 @@ https://api-based-products-assignment-2-group-1.postman.co/workspace/807c57bb-f3
 ## Security
 
 Services and APIs are secured by JWT and Role Based Access Control(RBAC)
-
-## Team
-
--   KOLAMALA RAMESH - 2023mt93294@wilp.bits-pilani.ac.in
--   UJJWAL DEY - 2023mt93290@wilp.bits-pilani.ac.in
--   MOHD ILYAS AHMED - 2023mt93044@wilp.bits-pilani.ac.in
--   TITTU VARGHESE - 2023mt93398@wilp.bits-pilani.ac.in
