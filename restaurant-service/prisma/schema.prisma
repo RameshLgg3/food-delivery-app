@@ -33,5 +33,6 @@ model food_item {
   restaurant_id Int
   created_at     DateTime   @default(now())
   restaurant    restaurant  @relation(fields: [restaurant_id], references: [id])
+  availability Boolean  @default(true)
 }
 

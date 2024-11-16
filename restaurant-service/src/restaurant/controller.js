@@ -11,19 +11,19 @@ const createRestaurant = async (req, res) => {
     }
 };
 
-// Controller function to add food items to a restaurant
+// Controller function to add menu to a restaurant
 const addFoodItems = async (req, res) => {
-    const { restaurant_id } = req.params;
-    const foodItems = req.body.food_items;
+    const restaurant_id = req.user.id;
+    const foodItems = req.body.menu;
 
     try {
         await restaurantService.addFoodItems(
             parseInt(restaurant_id),
             foodItems
         );
-        res.status(201).json({ message: "Food items added successfully" });
+        res.status(201).json({ message: "Menu added successfully" });
     } catch (error) {
-        console.error("Error adding food items:", error);
+        console.error("Error adding menu:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 };

@@ -27,7 +27,7 @@ restaurantRoutes.post("/restaurants", createRestaurant);
 restaurantRoutes.get("/restaurants", getAllRestaurants);
 
 // Route to add food items to a restaurant
-restaurantRoutes.post("/restaurants/:restaurant_id/food-items", addFoodItems);
+restaurantRoutes.post("/restaurants/menu", addFoodItems);
 
 // Route to get a single restaurant with its food items
 restaurantRoutes.get("/:restaurant_id", getRestaurantWithFoodItems);
