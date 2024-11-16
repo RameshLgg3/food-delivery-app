@@ -11,19 +11,19 @@ const createRestaurant = async (req, res) => {
     }
 };
 
-// Controller function to add food items to a restaurant
+// Controller function to add menu to a restaurant
 const addFoodItems = async (req, res) => {
-    const { restaurant_id } = req.params;
-    const foodItems = req.body.food_items;
+    const restaurant_id = req.user.id;
+    const foodItems = req.body.menu;
 
     try {
         await restaurantService.addFoodItems(
             parseInt(restaurant_id),
             foodItems
         );
-        res.status(201).json({ message: "Food items added successfully" });
+        res.status(201).json({ message: "Menu added successfully" });
     } catch (error) {
-        console.error("Error adding food items:", error);
+        console.error("Error adding menu:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
@@ -70,10 +70,62 @@ const getFoodItemsByRestaurantId = async (req, res) => {
     }
 };
 
+// Search food items
+const getFoodItemsBySearch = async (req, res) => {
+    try {
+        const { keyword } = req.query;
+        const foodItems = await restaurantService.getFoodItemsBySearch(keyword);
+        res.status(200).json({ success: true, data: foodItems });
+    } catch (error) {
+        console.error("Error searching food items:", error);
+        res.status(500).json({ message: "Error searching food items" });
+    }
+};
+
+// Search restaurants
+const getRestaurantsBySearch = async (req, res) => {
+    try {
+        const { keyword } = req.query;
+        const foodItems = await restaurantService.getRestaurantsBySearch(
+            keyword
+        );
+        res.status(200).json({ success: true, data: foodItems });
+    } catch (error) {
+        console.error("Error searching restaurants:", error);
+        res.status(500).json({ message: "Error searching restaurants" });
+    }
+};
+
+const updateRestaurant = async (req, res) => {
+    const { id } = req.params; // Get the restaurant ID from the route parameter
+    const updateData = req.body; // Get the data to update from the request body
+
+    try {
+        // Call the service method to update the restaurant
+        const updatedRestaurant = await restaurantService.updateRestaurant(
+            id,
+            updateData
+        );
+
+        if (!updatedRestaurant) {
+            return res.status(404).json({ message: "Restaurant not found" });
+        }
+
+        // Respond with the updated restaurant data
+        res.status(200).json(updatedRestaurant);
+    } catch (error) {
+        console.error("Error updating restaurant:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
     getAllRestaurants,
     getRestaurantWithFoodItems,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
+    updateRestaurant,
 };

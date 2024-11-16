@@ -5,6 +5,9 @@ const {
     getAllRestaurants,
     getRestaurantWithFoodItems,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
+    updateRestaurant,
 } = require("./controller");
 
 const restaurantRoutes = express.Router();
@@ -24,15 +27,23 @@ restaurantRoutes.post("/restaurants", createRestaurant);
 restaurantRoutes.get("/restaurants", getAllRestaurants);
 
 // Route to add food items to a restaurant
-restaurantRoutes.post("/restaurants/:restaurant_id/food-items", addFoodItems);
+restaurantRoutes.post("/restaurants/menu", addFoodItems);
 
 // Route to get a single restaurant with its food items
 restaurantRoutes.get("/:restaurant_id", getRestaurantWithFoodItems);
 
 // Route to get food items by restaurant_id
 restaurantRoutes.get(
-    "/restaurants/:restaurant_id/food-items",
+    "/restaurants/:restaurant_id/menu",
     getFoodItemsByRestaurantId
 );
+
+// Route to search food items
+restaurantRoutes.get("/menu/search", getFoodItemsBySearch);
+
+// Route to search restaurants
+restaurantRoutes.get("/restaurants/search", getRestaurantsBySearch);
+
+restaurantRoutes.put("/restaurants/:id", updateRestaurant);
 
 module.exports = restaurantRoutes;

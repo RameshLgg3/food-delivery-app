@@ -1,0 +1,33 @@
+{
+    "name": "auth-service",
+    "version": "1.0.0",
+    "main": "src/app.js",
+    "scripts": {
+        "test": "jest",
+        "start": "node --watch src/server.js"
+    },
+    "jest": {
+        "testMatch": [
+            "**/src/auth/**/*.test.js",
+            "**/src/auth/test.js"
+        ]
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@prisma/client": "^5.21.1",
+        "axios": "^1.7.7",
+        "bcryptjs": "^2.4.3",
+        "express": "^4.21.1",
+        "joi": "^17.13.3",
+        "jsonwebtoken": "^9.0.2",
+        "nodemon": "^3.1.7"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "prisma": "^5.22.0",
+        "supertest": "^7.0.0"
+    }
+}

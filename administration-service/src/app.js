@@ -1,11 +1,11 @@
 const express = require("express");
-const customerRoutes = require("./customer/routes");
+const adminRoutes = require("./admin/routes");
 const app = express();
 
 // Use JSON middleware
 app.use(express.json());
 
-// Load customer routes
-app.use("/api", customerRoutes);
+// Load admin routes
+app.use("/", adminRoutes);
 
 module.exports = app;

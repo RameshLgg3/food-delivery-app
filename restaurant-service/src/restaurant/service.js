@@ -52,10 +52,61 @@ const getFoodItemsByRestaurantId = async (restaurant_id) => {
     }
 };
 
+const getFoodItemsBySearch = async (searchQuery) => {
+    try {
+        if (!searchQuery) {
+            throw new Error("Search query cannot be empty");
+        }
+        return await restaurantRepository.getFoodItemsBySearch(searchQuery);
+    } catch (error) {
+        console.error("Error in getFoodItemsBySearch service:", error);
+        throw new Error("Error fetching food items");
+    }
+};
+
+const getRestaurantsBySearch = async (searchQuery) => {
+    try {
+        if (!searchQuery) {
+            throw new Error("Search query cannot be empty");
+        }
+        return await restaurantRepository.getRestaurantsBySearch(searchQuery);
+    } catch (error) {
+        console.error("Error in getRestaurantsBySearch service:", error);
+        throw new Error("Error fetching restaurants");
+    }
+};
+
+const updateRestaurant = async (id, data) => {
+    try {
+        // First, check if the restaurant exists
+        const existingRestaurant = await restaurantRepository.getRestaurantById(
+            id
+        );
+
+        if (!existingRestaurant) {
+            throw new Error("Restaurant not found");
+        }
+
+        // Proceed to update the restaurant with the new data
+        const updatedRestaurant = await restaurantRepository.updateRestaurant(
+            id,
+            data
+        );
+
+        return updatedRestaurant;
+    } catch (error) {
+        console.error("Error in updateRestaurant service:", error);
+        throw new Error("Error updating restaurant");
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
     getAllRestaurants,
     getRestaurantWithFoodItems,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
+    updateRestaurant,
 };

@@ -2,7 +2,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const Order = prisma.order;
-const OrdersMenu = prisma.orders_menu;
+const User = prisma.user;
 
-module.exports = { Order, OrdersMenu };
+module.exports = { User };
