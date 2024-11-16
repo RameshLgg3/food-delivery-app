@@ -101,8 +101,13 @@ https://api-based-products-assignment-2-group-1.postman.co/workspace/807c57bb-f3
 
 ## ERD
 
+Auth service
 ![Auth service](assets/auth-service.png)
+
+Customer service
 ![Customer service](assets/customer-service.png)
+
+Restaurant service
 ![Restaurant service](assets/restaurant-service.png)
 
 ## Architecture
