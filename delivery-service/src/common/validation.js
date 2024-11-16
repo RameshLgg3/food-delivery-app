@@ -4,7 +4,7 @@ exports.createDeliveryValidation = (data) => {
     const schema = Joi.object({
         orderId: Joi.string().required(),
         userid: Joi.number().required(),
-        deliveryPartnerId: Joi.number().required(),
+        deliveryPartnerId: Joi.number().optional(),
         restaurantId: Joi.number().required(),
         deliverySla: Joi.number(),
         destination: Joi.string().required(),
