@@ -5,8 +5,10 @@ const restaurantService = require("./restaurantService");
 class OrderController {
     async createOrder(req, res) {
         const user_id = req.user.id;
-        const { order_number, amount, status, delivery_status, order_items } =
-            req.body;
+        const order_number = `OR${Date.now()}`;
+        const status = "Pending";
+        const delivery_status = "Pending";
+        const { amount, order_items } = req.body;
 
         try {
             const order = await orderService.createOrder({
@@ -16,8 +18,6 @@ class OrderController {
                 status,
                 delivery_status,
             });
-
-            console.log("Order Items Data:", order_items);
 
             await orderService.addOrderItems(order.order_number, order_items);
 
@@ -139,6 +139,53 @@ class OrderController {
             res.status(500).json({
                 message: "Error searching menu: " + error,
             });
+        }
+    }
+
+    // src/customer/controller.js
+
+    async reOrder(req, res) {
+        const { order_number } = req.params;
+        const user_id = req.user.id;
+
+        try {
+            // Get the existing order by order_number
+            const existingOrder = await orderService.getOrderByOrderNumber(
+                order_number
+            );
+
+            if (!existingOrder || existingOrder.user_id !== user_id) {
+                return res
+                    .status(404)
+                    .json({ message: "Order not found or unauthorized" });
+            }
+
+            // Recreate the order with the same details but new order number and delivery status
+            const newOrderData = {
+                user_id: existingOrder.user_id,
+                order_number: `OR${Date.now()}`, // Generate a new unique order number
+                amount: existingOrder.amount,
+                status: "Pending", // Default or as needed
+                delivery_status: "Pending",
+            };
+
+            // Create a new order
+            const newOrder = await orderService.createOrder(newOrderData);
+
+            // Recreate the order items
+            await orderService.addOrderItems(
+                newOrder.order_number,
+                existingOrder.order_items
+            );
+
+            res.status(201).json({
+                status: 201,
+                message: "Reorder created successfully",
+                data: newOrder,
+            });
+        } catch (error) {
+            console.error("Error creating reorder:", error);
+            res.status(500).json({ message: "Error creating reorder", error });
         }
     }
 }

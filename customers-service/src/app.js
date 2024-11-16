@@ -6,6 +6,6 @@ const app = express();
 app.use(express.json());
 
 // Load customer routes
-app.use("/", customerRoutes);
+app.use("/api", customerRoutes);
 
 module.exports = app;

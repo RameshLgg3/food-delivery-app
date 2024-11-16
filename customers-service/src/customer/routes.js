@@ -17,19 +17,17 @@ router.get("/customers", (req, res) => {
 });
 
 // Create an order
-router.post("/api/orders", orderController.createOrder);
+router.post("/orders", orderController.createOrder);
 
 // Get all orders
-router.get("/api/orders", orderController.getAllOrders);
+router.get("/orders", orderController.getAllOrders);
 
 // Get order by ID
-router.get("/api/orders/:id", orderController.getOrderById);
+router.get("/orders/:id", orderController.getOrderById);
 
-// Update order status and delivery status
-router.patch("/api/orders/:id", orderController.updateOrder);
-
-router.get("/api/restaurants", orderController.fetchRestaurants);
-router.get("/api/restaurants/search", orderController.searchRestaurants);
-router.get("/api/menu/search", orderController.searchMenu);
+router.get("/restaurants", orderController.fetchRestaurants);
+router.get("/restaurants/search", orderController.searchRestaurants);
+router.get("/menu/search", orderController.searchMenu);
+router.post("/orders/:order_number/reorder", orderController.reOrder);
 
 module.exports = router;

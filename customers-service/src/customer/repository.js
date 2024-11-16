@@ -35,6 +35,13 @@ class OrderRepository {
             data: updateData,
         });
     }
+
+    async getOrderByNumber(order_number) {
+        return Order.findUnique({
+            where: { order_number },
+            include: { orders_menu: true }, // Include order items (if needed)
+        });
+    }
 }
 
 module.exports = new OrderRepository();
