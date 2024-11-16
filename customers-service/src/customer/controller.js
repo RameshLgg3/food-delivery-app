@@ -82,6 +82,58 @@ class OrderController {
             });
         }
     }
+
+    async searchRestaurants(req, res) {
+        try {
+            const { keyword } = req.query;
+            const token = req.headers.authorization;
+            if (!keyword) {
+                return res
+                    .status(401)
+                    .json({ message: "Keyword can not be empty" });
+            }
+            if (!token) {
+                return res
+                    .status(401)
+                    .json({ message: "Access Denied: No Token Provided" });
+            }
+            const restaurants = await restaurantService.searchRestaurants(
+                token,
+                keyword
+            );
+            res.status(200).json(restaurants);
+        } catch (error) {
+            res.status(500).json({
+                message: "Error searching restaurants: " + error,
+            });
+        }
+    }
+
+    async searchMenu(req, res) {
+        try {
+            const { keyword } = req.query;
+            const token = req.headers.authorization;
+            if (!keyword) {
+                return res
+                    .status(401)
+                    .json({ message: "Keyword can not be empty" });
+            }
+            if (!token) {
+                return res
+                    .status(401)
+                    .json({ message: "Access Denied: No Token Provided" });
+            }
+            const restaurants = await restaurantService.searchMenu(
+                token,
+                keyword
+            );
+            res.status(200).json(restaurants);
+        } catch (error) {
+            res.status(500).json({
+                message: "Error searching menu: " + error,
+            });
+        }
+    }
 }
 
 module.exports = new OrderController();

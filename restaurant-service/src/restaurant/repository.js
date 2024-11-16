@@ -76,6 +76,30 @@ const getFoodItemsByRestaurantId = async (restaurant_id) => {
     });
 };
 
+// Function to get food items by search
+const getFoodItemsBySearch = async (searchQuery) => {
+    return await FoodItem.findMany({
+        where: {
+            name: {
+                contains: searchQuery,
+                mode: "insensitive",
+            },
+        },
+    });
+};
+
+// Function to get restaurants by search
+const getRestaurantsBySearch = async (searchQuery) => {
+    return await Restaurant.findMany({
+        where: {
+            name: {
+                contains: searchQuery,
+                mode: "insensitive",
+            },
+        },
+    });
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
@@ -84,4 +108,6 @@ module.exports = {
     updateRestaurant,
     deleteRestaurant,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
 };

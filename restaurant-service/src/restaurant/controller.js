@@ -70,10 +70,38 @@ const getFoodItemsByRestaurantId = async (req, res) => {
     }
 };
 
+// Search food items
+const getFoodItemsBySearch = async (req, res) => {
+    try {
+        const { keyword } = req.query;
+        const foodItems = await restaurantService.getFoodItemsBySearch(keyword);
+        res.status(200).json({ success: true, data: foodItems });
+    } catch (error) {
+        console.error("Error searching food items:", error);
+        res.status(500).json({ message: "Error searching food items" });
+    }
+};
+
+// Search restaurants
+const getRestaurantsBySearch = async (req, res) => {
+    try {
+        const { keyword } = req.query;
+        const foodItems = await restaurantService.getRestaurantsBySearch(
+            keyword
+        );
+        res.status(200).json({ success: true, data: foodItems });
+    } catch (error) {
+        console.error("Error searching restaurants:", error);
+        res.status(500).json({ message: "Error searching restaurants" });
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
     getAllRestaurants,
     getRestaurantWithFoodItems,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
 };

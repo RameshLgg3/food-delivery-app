@@ -52,10 +52,36 @@ const getFoodItemsByRestaurantId = async (restaurant_id) => {
     }
 };
 
+const getFoodItemsBySearch = async (searchQuery) => {
+    try {
+        if (!searchQuery) {
+            throw new Error("Search query cannot be empty");
+        }
+        return await restaurantRepository.getFoodItemsBySearch(searchQuery);
+    } catch (error) {
+        console.error("Error in getFoodItemsBySearch service:", error);
+        throw new Error("Error fetching food items");
+    }
+};
+
+const getRestaurantsBySearch = async (searchQuery) => {
+    try {
+        if (!searchQuery) {
+            throw new Error("Search query cannot be empty");
+        }
+        return await restaurantRepository.getRestaurantsBySearch(searchQuery);
+    } catch (error) {
+        console.error("Error in getRestaurantsBySearch service:", error);
+        throw new Error("Error fetching restaurants");
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
     getAllRestaurants,
     getRestaurantWithFoodItems,
     getFoodItemsByRestaurantId,
+    getFoodItemsBySearch,
+    getRestaurantsBySearch,
 };

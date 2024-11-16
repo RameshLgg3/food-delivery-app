@@ -29,5 +29,7 @@ router.get("/api/orders/:id", orderController.getOrderById);
 router.patch("/api/orders/:id", orderController.updateOrder);
 
 router.get("/api/restaurants", orderController.fetchRestaurants);
+router.get("/api/restaurants/search", orderController.searchRestaurants);
+router.get("/api/menu/search", orderController.searchMenu);
 
 module.exports = router;

@@ -24,4 +24,42 @@ const getAllRestaurants = async (token) => {
     }
 };
 
-module.exports = { getAllRestaurants };
+// Function to search restaurants
+const searchRestaurants = async (token, keyword) => {
+    try {
+        const response = await axios.get(
+            `${RESTAURANT_SERVICE_URL}/restaurants/search?keyword=${keyword}`,
+            {
+                headers: { Authorization: token },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error(
+            "Error searching restaurants from restaurant-service:",
+            error.message
+        );
+        throw new Error("Could not search restaurants");
+    }
+};
+
+// Function to search menu
+const searchMenu = async (token, keyword) => {
+    try {
+        const response = await axios.get(
+            `${RESTAURANT_SERVICE_URL}/menu/search?keyword=${keyword}`,
+            {
+                headers: { Authorization: token },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error(
+            "Error searching menu from restaurant-service:",
+            error.message
+        );
+        throw new Error("Could not search menu");
+    }
+};
+
+module.exports = { getAllRestaurants, searchRestaurants, searchMenu };
