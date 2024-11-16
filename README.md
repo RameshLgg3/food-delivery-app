@@ -107,6 +107,7 @@ Ensure that the API handles CORS requests to enable cross-origin access for web 
 Application is deployed on https://www.heroku.com
 
 ## Demo video url
+**Admin Service:** https://drive.google.com/file/d/1c5yE9vjUAgDp-ULoIsikex0Gn1fh4T6W/view?usp=sharing 
 
 ## Api documentation
 
