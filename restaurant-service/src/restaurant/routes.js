@@ -7,6 +7,7 @@ const {
     getFoodItemsByRestaurantId,
     getFoodItemsBySearch,
     getRestaurantsBySearch,
+    updateRestaurant,
 } = require("./controller");
 
 const restaurantRoutes = express.Router();
@@ -42,5 +43,7 @@ restaurantRoutes.get("/menu/search", getFoodItemsBySearch);
 
 // Route to search restaurants
 restaurantRoutes.get("/restaurants/search", getRestaurantsBySearch);
+
+restaurantRoutes.put("/restaurants/:id", updateRestaurant);
 
 module.exports = restaurantRoutes;

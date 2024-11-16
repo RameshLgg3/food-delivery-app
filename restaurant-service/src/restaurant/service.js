@@ -76,6 +76,30 @@ const getRestaurantsBySearch = async (searchQuery) => {
     }
 };
 
+const updateRestaurant = async (id, data) => {
+    try {
+        // First, check if the restaurant exists
+        const existingRestaurant = await restaurantRepository.getRestaurantById(
+            id
+        );
+
+        if (!existingRestaurant) {
+            throw new Error("Restaurant not found");
+        }
+
+        // Proceed to update the restaurant with the new data
+        const updatedRestaurant = await restaurantRepository.updateRestaurant(
+            id,
+            data
+        );
+
+        return updatedRestaurant;
+    } catch (error) {
+        console.error("Error in updateRestaurant service:", error);
+        throw new Error("Error updating restaurant");
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
@@ -84,4 +108,5 @@ module.exports = {
     getFoodItemsByRestaurantId,
     getFoodItemsBySearch,
     getRestaurantsBySearch,
+    updateRestaurant,
 };

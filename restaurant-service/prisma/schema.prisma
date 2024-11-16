@@ -22,6 +22,8 @@ model restaurant {
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
   food_items   food_item[] // Define a one-to-many relationship with food_item
+  opening_hours String  @default("")
+  delivery_zones String @default("")
 }
 
 model food_item {

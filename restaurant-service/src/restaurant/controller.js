@@ -96,6 +96,29 @@ const getRestaurantsBySearch = async (req, res) => {
     }
 };
 
+const updateRestaurant = async (req, res) => {
+    const { id } = req.params; // Get the restaurant ID from the route parameter
+    const updateData = req.body; // Get the data to update from the request body
+
+    try {
+        // Call the service method to update the restaurant
+        const updatedRestaurant = await restaurantService.updateRestaurant(
+            id,
+            updateData
+        );
+
+        if (!updatedRestaurant) {
+            return res.status(404).json({ message: "Restaurant not found" });
+        }
+
+        // Respond with the updated restaurant data
+        res.status(200).json(updatedRestaurant);
+    } catch (error) {
+        console.error("Error updating restaurant:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 module.exports = {
     createRestaurant,
     addFoodItems,
@@ -104,4 +127,5 @@ module.exports = {
     getFoodItemsByRestaurantId,
     getFoodItemsBySearch,
     getRestaurantsBySearch,
+    updateRestaurant,
 };

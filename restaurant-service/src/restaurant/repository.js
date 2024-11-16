@@ -9,6 +9,8 @@ const createRestaurant = async (data) => {
             location: data.location,
             phone: data.phone,
             email: data.email,
+            opening_hours: data.opening_hours,
+            delivery_zones: data.delivery_zones,
         },
     });
 };
@@ -52,6 +54,19 @@ const getRestaurantWithFoodItems = async (restaurant_id) => {
             food_items: true,
         },
     });
+};
+
+const getRestaurantById = async (id) => {
+    try {
+        return await Restaurant.findUnique({
+            where: {
+                id: parseInt(id), // Assuming 'id' is the primary key in your Restaurant model
+            },
+        });
+    } catch (error) {
+        console.error("Error in getRestaurantById repository:", error);
+        throw new Error("Error fetching restaurant");
+    }
 };
 
 // Function to update a restaurant by restaurant_id
@@ -110,4 +125,5 @@ module.exports = {
     getFoodItemsByRestaurantId,
     getFoodItemsBySearch,
     getRestaurantsBySearch,
+    getRestaurantById,
 };
