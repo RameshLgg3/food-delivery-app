@@ -104,7 +104,7 @@ Ensure that the API handles CORS requests to enable cross-origin access for web 
 
 ## Design Choices, Role-Based Access, and Data Security
 
-# Key Design Choices
+## Key Design Choices
 
 -   **1. Scalability**
     The architecture of the Food Delivery Application is designed with scalability as a primary goal. Each service in the application is developed as an independent microservice, enabling horizontal scaling. This ensures that specific components, such as the Authentication or Customer Service, can scale independently based on demand without impacting other services.
@@ -127,35 +127,35 @@ Admin Service: Oversees platform management, including user roles and system mon
 -   **5. Prisma**
     Prisma is employed as the Object-Relational Mapping (ORM) tool for efficient and type-safe interaction with the PostgreSQL database. It simplifies schema management and accelerates development.
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
-Roles and Access
-The application implements a robust Role-Based Access Control (RBAC) system to ensure restricted access to specific resources and operations. The following roles are defined:
+-   **Roles and Access**
+    The application implements a robust Role-Based Access Control (RBAC) system to ensure restricted access to specific resources and operations. The following roles are defined:
 
-Customer: Access to browse restaurants, view menus, and place orders.
-Restaurant Owner: Access to manage restaurant details, add food items, and handle incoming orders.
-Delivery Agent: Access to view assigned deliveries and update delivery statuses.
-Admin: Full access to manage users, assign roles, and oversee system functionality.
-Implementation
-Role Assignment: User roles are assigned during registration or by the admin. These roles are stored in the database alongside user information.
-Access Control Enforcement: Middleware validates user roles and ensures only authorized roles can access specific routes. For example:
-Customers cannot access restaurant management endpoints.
-Delivery agents are restricted to delivery-related endpoints.
-Route Protection:
-JWTs (JSON Web Tokens) are used to authenticate users.
-The payload of the JWT includes user information and roles, which are validated on each request.
-Example Middleware Snippet:
-javascript
-Copy code
-const verifyRole = (allowedRoles) => (req, res, next) => {
-const userRole = req.user.role;
-if (!allowedRoles.includes(userRole)) {
-return res.status(403).json({ message: 'Access denied' });
-}
-next();
-};
+-   **Customer:** Access to browse restaurants, view menus, and place orders.
+-   **Restaurant Owner:** Access to manage restaurant details, add food items, and handle incoming orders.
+-   **Delivery Agent:** Access to view assigned deliveries and update delivery statuses.
+-   **Admin:** Full access to manage users, assign roles, and oversee system functionality.
+    Implementation
+-   **Role Assignment:** User roles are assigned during registration or by the admin. These roles are stored in the database alongside user information.
+    Access Control Enforcement: Middleware validates user roles and ensures only authorized roles can access specific routes. For example:
+    Customers cannot access restaurant management endpoints.
+    Delivery agents are restricted to delivery-related endpoints.
+-   **Route Protection:**
+    JWTs (JSON Web Tokens) are used to authenticate users.
+    The payload of the JWT includes user information and roles, which are validated on each request.
+    Example Middleware Snippet:
+    javascript
+    Copy code
+    const verifyRole = (allowedRoles) => (req, res, next) => {
+    const userRole = req.user.role;
+    if (!allowedRoles.includes(userRole)) {
+    return res.status(403).json({ message: 'Access denied' });
+    }
+    next();
+    };
 
-# Data Security
+## Data Security
 
 -   **1. JWT Authentication**
     Authentication is stateless and secure, using JSON Web Tokens (JWT). Upon successful login, a signed JWT is issued to the user, containing:
