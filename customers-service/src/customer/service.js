@@ -18,8 +18,8 @@ class OrderService {
         return orderRepository.createOrderItems(orderMenuEntries);
     }
 
-    async getAllOrders() {
-        return orderRepository.getAllOrders();
+    async getAllOrders(user_id) {
+        return orderRepository.getAllOrders(user_id);
     }
 
     async getOrderById(id) {

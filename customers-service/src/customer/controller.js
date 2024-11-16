@@ -4,14 +4,9 @@ const restaurantService = require("./restaurantService");
 
 class OrderController {
     async createOrder(req, res) {
-        const {
-            user_id,
-            order_number,
-            amount,
-            status,
-            delivery_status,
-            order_items,
-        } = req.body;
+        const user_id = req.user.id;
+        const { order_number, amount, status, delivery_status, order_items } =
+            req.body;
 
         try {
             const order = await orderService.createOrder({
@@ -38,7 +33,8 @@ class OrderController {
 
     async getAllOrders(req, res) {
         try {
-            const orders = await orderService.getAllOrders();
+            const user_id = req.user.id;
+            const orders = await orderService.getAllOrders(user_id);
             res.json({ status: 200, message: "Success", data: orders });
         } catch (error) {
             res.status(500).json({ message: "Internal Server Error" });

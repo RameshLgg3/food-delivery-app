@@ -13,10 +13,15 @@ class OrderRepository {
         return createdItems;
     }
 
-    async getAllOrders(status = "delivered") {
-        const filter = status
-            ? { where: { status: { equals: status, mode: "insensitive" } } }
-            : {};
+    async getAllOrders(user_id, status) {
+        const filter = {
+            where: {
+                ...(user_id && { user_id }), // Include user_id filter if provided
+                ...(status && {
+                    status: { equals: status, mode: "insensitive" }, // Include status filter if provided
+                }),
+            },
+        };
         return Order.findMany(filter);
     }
 
