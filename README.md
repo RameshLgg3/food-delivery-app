@@ -99,6 +99,10 @@ https://api-based-products-assignment-2-group-1.postman.co/workspace/807c57bb-f3
 
 ## Demo video url
 
+## Api documentation
+
+https://documenter.getpostman.com/view/37944880/2sAYBPmEH3
+
 ## ERD
 
 Auth service
