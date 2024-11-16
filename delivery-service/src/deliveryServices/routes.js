@@ -19,6 +19,4 @@ router.get("/status", (req, res) => {
         message: "Delivery service is up and running",
     });
 });
-
-
 module.exports = router;

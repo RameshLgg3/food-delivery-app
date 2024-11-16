@@ -17,13 +17,16 @@ enum Role {
   CUSTOMER
   RESTAURANT
   ADMIN
+  DELIVERYAGENT
 }
 
 model user {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  role     String  @default("CUSTOMER") 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  password     String
+  mobileNumber String
+  name         String
+  role         String   @default("CUSTOMER")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

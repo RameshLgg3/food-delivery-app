@@ -2,10 +2,19 @@
 
 ## Team
 
--   KOLAMALA RAMESH - 2023mt93294@wilp.bits-pilani.ac.in
--   UJJWAL DEY - 2023mt93290@wilp.bits-pilani.ac.in
--   MOHD ILYAS AHMED - 2023mt93044@wilp.bits-pilani.ac.in
--   TITTU VARGHESE - 2023mt93398@wilp.bits-pilani.ac.in
+-   KOLAMALA RAMESH - 2023mt93294[@]wilp.bits-pilani.ac.in
+-   UJJWAL DEY - 2023mt93290[@]wilp.bits-pilani.ac.in
+-   MOHD ILYAS AHMED - 2023mt93044[@]wilp.bits-pilani.ac.in
+-   TITTU VARGHESE - 2023mt93398[@]wilp.bits-pilani.ac.in
+
+## Components
+-  [Gateway](./api-gateway-service/)
+-  [Auth Service](./auth-service)
+-  [Customer Service](./customers-service)
+-  [Delivery Service](./delivery-service)
+-  [Restaurant Service](./restaurant-service)
+-  [Restaurant Owner Service](./resturent-owner-services)
+-  [Administration Service](./administration-service)
 
 # Design and Development of an API product for a Food Delivery System
 
@@ -34,12 +43,15 @@ You are required to implement functionalities for each of the following user rol
 -   **View Orders:** Restaurant owners can view incoming orders and update their status (e.g., order accepted, preparing, ready for delivery).
 -   **Update Restaurant Details:** Restaurant owners can update the restaurant’s details, such as opening hours and delivery zones.
 
-### 3. Delivery Personnel Functionalities:
+### 3. Delivery Management Functionalities:
 
 -   **Register/Login:** Delivery personnel can create an account, log in, and manage their profile (name, contact details, vehicle type).
--   **View Available Deliveries:** Delivery personnel can view a list of available deliveries and accept orders for delivery.
+-   **Location Management:** App can automatically stream the location of delivery agent for real time tracking and assignment.
 -   **Track Delivery Status:** Delivery personnel can update the status of a delivery (e.g., picked up, en route, delivered).
--   **Manage Delivery Availability:** Delivery personnel can set their availability for receiving delivery requests.
+-   **Rating and Review:** User can review the order delivery.
+-   **Dispute Management:** User can raise dispute regarding the delivery.
+-   **Delivery Management:** APIs to get delivery details and assignments.
+-   **Delivery Assignment:** Implementation to support delivery assignment based on the geographical distance.
 
 ### 4. Administrator Functionalities:
 
@@ -47,6 +59,7 @@ You are required to implement functionalities for each of the following user rol
 -   **View and Manage Orders:** Administrators can view all platform orders and manage them if necessary (e.g., cancelling, rescheduling).
 -   **Generate Reports:** Administrators can generate reports on the system’s performance (e.g., most popular restaurants, average delivery time, order trends).
 -   **Monitor Platform Activity:** Administrators can monitor overall platform health, including active users, delivery activity, and order statuses.
+ 
 
 ## Non-Functional Requirements:
 
@@ -112,7 +125,11 @@ Restaurant service
 
 ## Architecture
 
-![High level architecture](assets/food-delivery-app.png)
+![High level architecture](docs/food-delivery-app.png)
+![Component Level architecture](docs/food-delivry-app-arch.png)
+
+## DB ER Diagram
+![DB ER Diagram](docs/db-er-diagram.svg)
 
 ## Security
 

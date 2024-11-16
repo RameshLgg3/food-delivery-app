@@ -1,8 +1,8 @@
 const {HTTP_SUCCESS, HTTP_BAD_REQUEST} = require("../common/http_error");
 const { DELIVERY_ASSIGNMENT_RADIUS, DELIVERY_SLA_PER_KM} = require("../common/constants")
 const { locationUpdateRequest, deliveryAssignRequest} = require("../common/validation");
-const {updateLocation, getLocation, getLocationLonAndLat, findNearestMembers} = require("./repository");
-const {createDelivery} = require("../deliveryServices/repository");
+const {updateLocation, getLocation, getLocationLonAndLat, findNearestMembers, deleteGeoPos} = require("./repository");
+const {updateDelivery, findDeliveryById} = require("../deliveryServices/repository");
 
 exports.updateLocationController = async (req, res) => {
 
@@ -12,7 +12,7 @@ exports.updateLocationController = async (req, res) => {
     }
 
     try {
-        const key = req.user.userType + ":" + req.user.id;
+        const key = req.user.role + ":" + req.user.id;
 
         await updateLocation(req.body.lon, req.body.lat, key).catch((err) => {
             console.log(err)
@@ -66,12 +66,19 @@ exports.assignDeliveryController = async (req, res) => {
     }
 
     try {
-        const key =  "restaurant:" + req.body.restaurantId;
+        const key =  "RESTAURANT:" + req.body.restaurantId;
+
+        // Add Order Delivery Location
+        // location = req.body.destination.split(",")
+        // console.log(location)
+        // await updateLocation(location[0], location[1], "ORDER:"+req.body.orderId).catch((err) => {
+        //     console.log(err)
+        // })
 
         /** Assignment Operation **/
         // 1. Midpoint calculation
-        const restaurant = await getLocationLonAndLat("restaurant:" + req.body.restaurantId);
-        const orderDeliveryLocation = await getLocationLonAndLat("order:" + req.body.orderId);
+        const restaurant = await getLocationLonAndLat("RESTAURANT:" + req.body.restaurantId);
+        const orderDeliveryLocation = await getLocationLonAndLat("ORDER:" + req.body.orderId);
 
         if(!restaurant || !orderDeliveryLocation) {
             return res.status(400).json({  status:false, message: "unable to process the request"});
@@ -95,19 +102,20 @@ exports.assignDeliveryController = async (req, res) => {
 
         const deliveryPartnerId = assignedDeliveryAgent[0].split(':');
 
-        // 3. Creating Delivery Request
-        let deliveryObject = {
-            orderId: req.body.orderId,
-            userid: req.body.userId,
-            deliveryPartnerId: parseInt(deliveryPartnerId[1]),
-            deliverySla: DELIVERY_SLA_PER_KM * assignedDeliveryAgent[1],
-            restaurant: restaurant[0] +","+ restaurant[1],
-            destination: orderDeliveryLocation[0] +","+ orderDeliveryLocation[1],
-        }
+        let deliveryObject = await findDeliveryById(req.body.orderId);
 
-        await createDelivery(deliveryObject).catch((err) => {
+        // 3. Creating Delivery Request
+        deliveryObject.deliveryPartnerId = parseInt(deliveryPartnerId[1]);
+        deliveryObject.deliverySla =  DELIVERY_SLA_PER_KM * assignedDeliveryAgent[1];
+
+        delete deliveryObject.rating
+        delete deliveryObject.dispute
+
+        await updateDelivery(deliveryObject).catch((err) => {
             console.log(err)
         });
+
+        await deleteGeoPos("DELIVERTAGENT:"+deliveryObject.deliveryPartnerId )
 
         return res
             .status(HTTP_SUCCESS)
@@ -121,5 +129,5 @@ exports.assignDeliveryController = async (req, res) => {
 };
 
 function filterDeliveryAgents(results) {
-    return results.filter(result => result[0].startsWith('deliveryagent'));
+    return results.filter(result => result[0].startsWith('DELIVERYAGENT'));
 }

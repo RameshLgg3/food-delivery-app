@@ -1,0 +1,1046 @@
+openapi: 3.0.3
+info:
+  title: DeliveryApp-Assignment
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: localhost
+paths:
+  /auth/register:
+    post:
+      summary: Register
+      description: Register
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: customer@email.com
+                mobileNumber:
+                  type: string
+                  example: '9999999999'
+                name:
+                  type: string
+                  example: Customer
+                password:
+                  type: string
+                  example: password
+                role:
+                  type: string
+                  example: DELIVERYAGENT
+            examples:
+              Register:
+                value:
+                  email: customer@email.com
+                  mobileNumber: '9999999999'
+                  name: Customer
+                  password: password
+                  role: DELIVERYAGENT
+      responses:
+        '201':
+          description: Register
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '42'
+            Date:
+              schema:
+                type: string
+                example: Fri, 15 Nov 2024 06:39:17 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"2a-nMoFx54+czTntmSLXl3mqIsZV4A"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User registered successfully
+              examples:
+                Register:
+                  value:
+                    message: User registered successfully
+  /auth/login:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tittu@email.com
+                password:
+                  type: string
+                  example: password
+            examples:
+              Login:
+                value:
+                  email: tittu@email.com
+                  password: password
+      responses:
+        '200':
+          description: Login
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '249'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:03:10 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"f9-lqvCdXP0PFfVrkEVfk4u3xt9VGc"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Login successful
+                  token:
+                    type: string
+                    example: >-
+                      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzA1NDE3OTAsImV4cCI6MjA5MDU0MTc5MH0.dpoyQKYfOBGkH5y2hDpscjajlcwTVqnH487h6CfhDcc
+              examples:
+                Login:
+                  value:
+                    message: Login successful
+                    token: >-
+                      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0aXR0dUBlbWFpbC5jb20iLCJ1c2VyVHlwZSI6ImRlbGl2ZXJ5YWdlbnQiLCJpYXQiOjE3MzA1NDE3OTAsImV4cCI6MjA5MDU0MTc5MH0.dpoyQKYfOBGkH5y2hDpscjajlcwTVqnH487h6CfhDcc
+  /delivery:
+    post:
+      summary: Create Delivery
+      description: Create Delivery
+      operationId: createDelivery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deliveryPartnerId:
+                  type: number
+                  example: 1
+                deliverySla:
+                  type: number
+                  example: 30
+                destination:
+                  type: string
+                  example: 17.3843222,78.3253527
+                orderId:
+                  type: string
+                  example: O1
+                restaurantId:
+                  type: number
+                  example: 1
+                userid:
+                  type: number
+                  example: 2
+            examples:
+              Create Delivery:
+                value:
+                  deliveryPartnerId: 1
+                  deliverySla: 30
+                  destination: 17.3843222,78.3253527
+                  orderId: O1
+                  restaurantId: 1
+                  userid: 2
+      responses:
+        '200':
+          description: Create Delivery
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '346'
+            Date:
+              schema:
+                type: string
+                example: Fri, 15 Nov 2024 07:08:38 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"15a-GU4C23T7U0uZD18c3EsqbXIqpLk"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      createdAt:
+                        type: string
+                        example: '2024-11-15T07:08:38.260Z'
+                      deliveryPartnerId:
+                        type: number
+                        example: 1
+                      deliverySla:
+                        type: number
+                        example: 30
+                      destination:
+                        type: string
+                        example: 17.3843222,78.3253527
+                      disputeStatus:
+                        type: boolean
+                        example: false
+                      id:
+                        type: string
+                        example: cm3iee1o40000mn54uci6o8pt
+                      orderId:
+                        type: string
+                        example: O1
+                      restaurantId:
+                        type: number
+                        example: 1
+                      status:
+                        type: boolean
+                        example: false
+                      updatedAt:
+                        type: string
+                        example: '2024-11-15T07:08:38.260Z'
+                      userid:
+                        type: number
+                        example: 2
+                  message:
+                    type: string
+                    example: Successfully created the delivery details
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Create Delivery:
+                  value:
+                    data:
+                      createdAt: '2024-11-15T07:08:38.260Z'
+                      deliveryPartnerId: 1
+                      deliverySla: 30
+                      destination: 17.3843222,78.3253527
+                      disputeStatus: false
+                      id: cm3iee1o40000mn54uci6o8pt
+                      orderId: O1
+                      restaurantId: 1
+                      status: false
+                      updatedAt: '2024-11-15T07:08:38.260Z'
+                      userid: 2
+                    message: Successfully created the delivery details
+                    status: true
+      security:
+        - bearerAuth: []
+  /delivery/{deliveryId}:
+    get:
+      summary: Get Delivery by DeliveryId
+      description: Get Delivery by DeliveryId
+      operationId: getDeliveryByDeliveryid
+      responses:
+        '200':
+          description: Get Delivery by DeliveryId
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '378'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:03:39 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"17a-xSLgUvob8bT0C+LkhvyKDIyCoBg"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      createdAt:
+                        type: string
+                        example: '2024-11-02T10:03:29.091Z'
+                      deliveryPartnerId:
+                        type: number
+                        example: 1
+                      deliverySla:
+                        type: number
+                        example: 30
+                      destination:
+                        type: string
+                        example: 17.3843222,78.3253527
+                      dispute:
+                        nullable: true
+                        example: null
+                      disputeStatus:
+                        type: boolean
+                        example: false
+                      id:
+                        type: string
+                        example: cm2zzwts30000r7jqibzqhoqu
+                      orderId:
+                        type: string
+                        example: O1
+                      rating:
+                        nullable: true
+                        example: null
+                      restaurant:
+                        type: string
+                        example: ''
+                      status:
+                        type: boolean
+                        example: false
+                      updatedAt:
+                        type: string
+                        example: '2024-11-02T10:03:29.091Z'
+                      userId:
+                        nullable: true
+                        example: null
+                      userid:
+                        type: number
+                        example: 2
+                  message:
+                    type: string
+                    example: Successfully retrieved the data
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Get Delivery by DeliveryId:
+                  value:
+                    data:
+                      createdAt: '2024-11-02T10:03:29.091Z'
+                      deliveryPartnerId: 1
+                      deliverySla: 30
+                      destination: 17.3843222,78.3253527
+                      dispute: null
+                      disputeStatus: false
+                      id: cm2zzwts30000r7jqibzqhoqu
+                      orderId: O1
+                      rating: null
+                      restaurant: ''
+                      status: false
+                      updatedAt: '2024-11-02T10:03:29.091Z'
+                      userId: null
+                      userid: 2
+                    message: Successfully retrieved the data
+                    status: true
+      security:
+        - bearerAuth: []
+    post:
+      summary: Update Delivery by DeliveryId
+      description: Update Delivery by DeliveryId
+      operationId: updateDeliveryByDeliveryid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deliverySla:
+                  type: number
+                  example: 32
+                status:
+                  type: boolean
+                  example: true
+            examples:
+              Update Delivery by DeliveryId:
+                value:
+                  deliverySla: 32
+                  status: true
+      responses:
+        '200':
+          description: Update Delivery by DeliveryId
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '344'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:10:07 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"158-H3TzDUoQkMDlUB+ZetE7ZJ+Eefg"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      createdAt:
+                        type: string
+                        example: '2024-11-02T10:03:29.091Z'
+                      deliveryPartnerId:
+                        type: number
+                        example: 1
+                      deliverySla:
+                        type: number
+                        example: 32
+                      destination:
+                        type: string
+                        example: 17.3843222,78.3253527
+                      disputeStatus:
+                        type: boolean
+                        example: false
+                      id:
+                        type: string
+                        example: cm2zzwts30000r7jqibzqhoqu
+                      orderId:
+                        type: string
+                        example: O1
+                      restaurant:
+                        type: string
+                        example: ''
+                      status:
+                        type: boolean
+                        example: true
+                      updatedAt:
+                        type: string
+                        example: '2024-11-02T10:03:29.091Z'
+                      userid:
+                        type: number
+                        example: 2
+                  message:
+                    type: string
+                    example: Successfully updated the delivery details
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Update Delivery by DeliveryId:
+                  value:
+                    data:
+                      createdAt: '2024-11-02T10:03:29.091Z'
+                      deliveryPartnerId: 1
+                      deliverySla: 32
+                      destination: 17.3843222,78.3253527
+                      disputeStatus: false
+                      id: cm2zzwts30000r7jqibzqhoqu
+                      orderId: O1
+                      restaurant: ''
+                      status: true
+                      updatedAt: '2024-11-02T10:03:29.091Z'
+                      userid: 2
+                    message: Successfully updated the delivery details
+                    status: true
+      security:
+        - bearerAuth: []
+    parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          type: string
+          example: cm3iee1o40000mn54uci6o8pt
+  /delivery/review/{deliveryId}:
+    post:
+      summary: Rating - Order / Delviery
+      description: Rating - Order / Delviery
+      operationId: ratingOrderDelviery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Delivery was awesome!
+                rating:
+                  type: number
+                  example: 5
+            examples:
+              Rating - Order / Delviery:
+                value:
+                  message: Delivery was awesome!
+                  rating: 5
+      responses:
+        '200':
+          description: Rating - Order / Delviery
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '62'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:10:28 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"3e-24BR9B5nlWmLE8t2AdXVNamfVl8"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Successfully reviewed the delivery
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Rating - Order / Delviery:
+                  value:
+                    message: Successfully reviewed the delivery
+                    status: true
+      security:
+        - bearerAuth: []
+    parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          type: string
+          example: cm3iee1o40000mn54uci6o8pt
+  /delivery/dispute/{deliveryId}:
+    post:
+      summary: Dispute - Order / Delivery
+      description: Dispute - Order / Delivery
+      operationId: disputeOrderDelivery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Order got spoiled
+            examples:
+              Dispute - Order / Delivery:
+                value:
+                  message: Order got spoiled
+      responses:
+        '200':
+          description: Dispute - Order / Delivery
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '308'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:11:11 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"134-w/cyGQxAhpFVOFy92gB0+S+jofE"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      createdAt:
+                        type: string
+                        example: '2024-11-02T10:11:11.483Z'
+                      deliveryId:
+                        type: string
+                        example: cm2zzwts30000r7jqibzqhoqu
+                      id:
+                        type: string
+                        example: cm3006qka0003gyf9cf53flw3
+                      message:
+                        type: string
+                        example: Order got spoiled
+                      resolution:
+                        type: string
+                        example: ''
+                      status:
+                        type: boolean
+                        example: false
+                      type:
+                        type: string
+                        example: delivery
+                      updatedAt:
+                        type: string
+                        example: '2024-11-02T10:11:11.483Z'
+                  message:
+                    type: string
+                    example: Successfully raised dispute the delivery
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Dispute - Order / Delivery:
+                  value:
+                    data:
+                      createdAt: '2024-11-02T10:11:11.483Z'
+                      deliveryId: cm2zzwts30000r7jqibzqhoqu
+                      id: cm3006qka0003gyf9cf53flw3
+                      message: Order got spoiled
+                      resolution: ''
+                      status: false
+                      type: delivery
+                      updatedAt: '2024-11-02T10:11:11.483Z'
+                    message: Successfully raised dispute the delivery
+                    status: true
+      security:
+        - bearerAuth: []
+    parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          type: string
+          example: cm3iee1o40000mn54uci6o8pt
+  /delivery/dispute/{deliveryid}/update:
+    post:
+      summary: Dispute Update - Order / Delivery
+      description: Dispute Update - Order / Delivery
+      operationId: disputeUpdateOrderDelivery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resolution:
+                  type: string
+                  example: Re-opened
+                status:
+                  type: boolean
+                  example: false
+            examples:
+              Dispute Update - Order / Delivery:
+                value:
+                  resolution: Re-opened
+                  status: false
+      responses:
+        '200':
+          description: Dispute Update - Order / Delivery
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '318'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:11:30 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"13e-iMtSyFA7NrYByhuflCnRy+9cWjI"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      createdAt:
+                        type: string
+                        example: '2024-11-02T10:11:11.483Z'
+                      deliveryId:
+                        type: string
+                        example: cm2zzwts30000r7jqibzqhoqu
+                      id:
+                        type: string
+                        example: cm3006qka0003gyf9cf53flw3
+                      message:
+                        type: string
+                        example: Order got spoiled
+                      resolution:
+                        type: string
+                        example: Re-opened
+                      status:
+                        type: boolean
+                        example: false
+                      type:
+                        type: string
+                        example: delivery
+                      updatedAt:
+                        type: string
+                        example: '2024-11-02T10:11:11.483Z'
+                  message:
+                    type: string
+                    example: Successfully updated the delivery details
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Dispute Update - Order / Delivery:
+                  value:
+                    data:
+                      createdAt: '2024-11-02T10:11:11.483Z'
+                      deliveryId: cm2zzwts30000r7jqibzqhoqu
+                      id: cm3006qka0003gyf9cf53flw3
+                      message: Order got spoiled
+                      resolution: Re-opened
+                      status: false
+                      type: delivery
+                      updatedAt: '2024-11-02T10:11:11.483Z'
+                    message: Successfully updated the delivery details
+                    status: true
+      security:
+        - bearerAuth: []
+    parameters:
+      - name: deliveryid
+        in: path
+        required: true
+        schema:
+          type: string
+          example: cm3iee1o40000mn54uci6o8pt
+  /location:
+    post:
+      summary: Location Service - Add / Update Location
+      description: Location Service - Add / Update Location
+      operationId: locationServiceAddUpdateLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lat:
+                  type: string
+                  example: '78.3391805'
+                lon:
+                  type: string
+                  example: '17.388091'
+            examples:
+              Location Service - Add / Update Location:
+                value:
+                  lat: '78.3391805'
+                  lon: '17.388091'
+      responses:
+        '200':
+          description: Location Service - Add / Update Location
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '61'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:11:50 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"3d-QKXJ2eRXwDmefYP2skIr987cleY"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Successfully updated the location
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Location Service - Add / Update Location:
+                  value:
+                    message: Successfully updated the location
+                    status: true
+      security:
+        - bearerAuth: []
+  /location/{type}/{id}:
+    get:
+      summary: Get Location by Type and Id
+      description: Get Location by Type and Id
+      operationId: getLocationByTypeAndId
+      responses:
+        '200':
+          description: Get Location by Type and Id
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '120'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:12:01 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"78-uNpkxsNZNmn3Vn9tXILVXNp8QQI"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                        example: '17.38809317350387573'
+                      example:
+                        - '17.38809317350387573'
+                        - '78.33918081326754645'
+                    example:
+                      - - '17.38809317350387573'
+                        - '78.33918081326754645'
+                  message:
+                    type: string
+                    example: Successfully retrieved the location
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Get Location by Type and Id:
+                  value:
+                    data:
+                      - - '17.38809317350387573'
+                        - '78.33918081326754645'
+                    message: Successfully retrieved the location
+                    status: true
+      security:
+        - bearerAuth: []
+    parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          example: DELIVERYAGENT
+        description: can use for tracking order / user / delivery agent
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '1'
+  /location/assign:
+    post:
+      summary: Assign Delivery Agent
+      description: Assign Delivery Agent
+      operationId: assignDeliveryAgent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderId:
+                  type: string
+                  example: '1'
+                restaurantId:
+                  type: string
+                  example: '1'
+                userId:
+                  type: number
+                  example: 2
+            examples:
+              Assign Delivery Agent:
+                value:
+                  orderId: '1'
+                  restaurantId: '1'
+                  userId: 2
+      responses:
+        '200':
+          description: Assign Delivery Agent
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '104'
+            Date:
+              schema:
+                type: string
+                example: Sat, 02 Nov 2024 10:12:24 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"68-gEvfatVPcegJlv1nE+RYx0V3vdQ"
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      example: deliveryagent:1
+                    example:
+                      - deliveryagent:1
+                      - '0.8373'
+                  message:
+                    type: string
+                    example: Successfully assigned the delivery agent
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                Assign Delivery Agent:
+                  value:
+                    data:
+                      - deliveryagent:1
+                      - '0.8373'
+                    message: Successfully assigned the delivery agent
+                    status: true
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags: []

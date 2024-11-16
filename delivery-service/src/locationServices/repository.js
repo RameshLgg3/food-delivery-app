@@ -1,11 +1,12 @@
 const Redis = require('ioredis');
 
 const redis = new Redis({
-    host: 'localhost', // Redis server hostname
-    port: 6379,        // Redis server port
+    host: 'localhost' || process.env.REDIS_HOST, // Redis server hostname
+    port: 6379 || process.env.REDIS_PORT,        // Redis server port
 });
 
 exports.updateLocation = async(lon, lat, id) => {
+    console.log(lon, lat, id)
     return await redis.geoadd("locations", lon, lat, id);
 }
 
@@ -23,4 +24,7 @@ exports.findNearestMembers = async(lon, lat, radius) => {
         "BYRADIUS", radius, "km",
         "WITHDIST"
     );
+}
+exports.deleteGeoPos = async(key) => {
+    return redis.zrem("locations", key)
 }
