@@ -6,6 +6,18 @@ class OrderService {
         return orderRepository.createOrder(data);
     }
 
+    async addOrderItems(order_number, order_items) {
+        const orderMenuEntries = order_items.map((item) => ({
+            order_number,
+            restaurant_id: item.restaurant_id,
+            menu_item_id: item.menu_item_id,
+            quantity: item.quantity,
+            price: item.price,
+        }));
+
+        return orderRepository.createOrderItems(orderMenuEntries);
+    }
+
     async getAllOrders() {
         return orderRepository.getAllOrders();
     }

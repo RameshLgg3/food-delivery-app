@@ -4,8 +4,14 @@ const restaurantService = require("./restaurantService");
 
 class OrderController {
     async createOrder(req, res) {
-        const { user_id, order_number, amount, status, delivery_status } =
-            req.body;
+        const {
+            user_id,
+            order_number,
+            amount,
+            status,
+            delivery_status,
+            order_items,
+        } = req.body;
 
         try {
             const order = await orderService.createOrder({
@@ -15,6 +21,11 @@ class OrderController {
                 status,
                 delivery_status,
             });
+
+            console.log("Order Items Data:", order_items);
+
+            await orderService.addOrderItems(order.order_number, order_items);
+
             res.status(201).json({
                 status: 201,
                 message: "Order has been created.",
