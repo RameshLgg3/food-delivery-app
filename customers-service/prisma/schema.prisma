@@ -32,3 +32,16 @@ model orders_menu {
 
   @@unique([order_number, restaurant_id, menu_item_id]) // Composite key to ensure unique combinations
 }
+
+model address {
+  id          Int      @id @default(autoincrement())
+  customer_id Int
+  street      String
+  city        String
+  state       String
+  postal_code String
+  country     String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+}
