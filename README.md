@@ -93,10 +93,6 @@ Ensure that the API handles CORS requests to enable cross-origin access for web 
 
 Application is deployed on https://www.heroku.com
 
-## API collection workspace
-
-https://api-based-products-assignment-2-group-1.postman.co/workspace/807c57bb-f347-410a-b8b6-0f143a33eff2/team-quickstart
-
 ## Demo video url
 
 ## Api documentation
