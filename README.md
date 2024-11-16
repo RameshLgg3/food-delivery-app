@@ -181,7 +181,8 @@ Application is deployed on https://www.heroku.com
 
 ## Demo video url
 
-**Admin Service:** https://drive.google.com/file/d/1c5yE9vjUAgDp-ULoIsikex0Gn1fh4T6W/view?usp=sharing
+- **Admin Service:** [Video Link](https://drive.google.com/file/d/1c5yE9vjUAgDp-ULoIsikex0Gn1fh4T6W/view?usp=sharing)
+- **Delivery Service:** [Video Link](https://wilpbitspilaniacin0-my.sharepoint.com/:v:/g/personal/2023mt93398_wilp_bits-pilani_ac_in/EUThwQQzKolFhiL5Y37oFIcBXZqNVJgzZFF4sTMQdb7SIw?e=o8MSiS)
 
 ## Api documentation
 
@@ -197,6 +198,9 @@ Customer service
 
 Restaurant service
 ![Restaurant service](assets/restaurant-service.png)
+
+Delivery service
+![Delivery service](assets/delivery-service-erd.png)
 
 ## Architecture
 
