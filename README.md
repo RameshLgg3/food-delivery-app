@@ -263,15 +263,13 @@ Application is deployed on https://www.heroku.com
 
 https://documenter.getpostman.com/view/37944880/2sAYBPmEH3
 
-<<<<<<< Updated upstream
 ![Postman All Api Documentation](assets/postman_api_documentation.png)
 [Swagger Delivery Service Documentation](./docs/swagger.yaml)
 ![Swagger Delivery Service Documentation](assets/swagger_delivery_service_documentation.png)
-=======
+
 ## Git repo
 
 https://github.com/RameshLgg3/food-delivery-app
->>>>>>> Stashed changes
 
 ## ERD
 
