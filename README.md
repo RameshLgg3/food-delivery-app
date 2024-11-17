@@ -179,47 +179,74 @@ The token is validated on each request, ensuring secure access to APIs without r
 
 ### 1. Registration
 
-1.1 User should be able to register the application with email and password or mobile number and password.
-1.2 User should be able to register the application as a customer, restaurant owner, admin, or delivery partner.
+-   User should be able to register the application with email and password or mobile number and password.
+-   User should be able to register the application as a customer, restaurant owner, admin, or delivery partner.
 
 ### 2. Login
 
-2.1 User should be able to log in to the application after registration using either their mobile number and password or their email and password.
-2.2 User with either invalid email or password should be shown an appropriate message that they are not authenticated to the application.
+-   User should be able to log in to the application after registration using either their mobile number and password or their email and password.
+-   User with either invalid email or password should be shown an appropriate message that they are not authenticated to the application.
 
 ### 3. Role-Based Access
 
-3.1 User logged in as a restaurant owner should not have access to the specific capabilities of a customer, admin, or delivery partner.
-3.2 User logged in as an admin should not have access to the specific capabilities of a customer, restaurant owner, or delivery partner.
-3.3 User logged in as a customer should not have access to the specific capabilities of a restaurant owner, admin, or delivery partner.
-3.4 User logged in as a delivery partner should not have access to the specific capabilities of a customer, admin, or restaurant owner.
+-   User logged in as a restaurant owner should not have access to the specific capabilities of a customer, admin, or delivery partner.
+-   User logged in as an admin should not have access to the specific capabilities of a customer, restaurant owner, or delivery partner.
+-   User logged in as a customer should not have access to the specific capabilities of a restaurant owner, admin, or delivery partner.
+-   User logged in as a delivery partner should not have access to the specific capabilities of a customer, admin, or restaurant owner.
 
 ### 4. Restaurant Owner Functionalities
 
-4.1 Restaurant owner should be able to enlist one or multiple restaurant outlets to the application.
-4.2 While creating a restaurant outlet, the owner must provide the restaurant name, location, phone number, working hours, delivery zone, and email ID for communication.
-4.3 Application should provide the restaurant owner the facility to update its working hours and delivery zone if needed.
-4.4 Application should give the restaurant owner the facilities to see all the details of the restaurant outlets they have enlisted.
-4.5 Restaurant owner should be able to create the menu details of the restaurant outlets by dish name and their prices.
-4.6 Restaurant owner should also be able to see the menu based on their outlet number/name individually.
+-   Restaurant owner should be able to enlist one or multiple restaurant outlets to the application.
+-   While creating a restaurant outlet, the owner must provide the restaurant name, location, phone number, working hours, delivery zone, and email ID for communication.
+-   Application should provide the restaurant owner the facility to update its working hours and delivery zone if needed.
+-   Application should give the restaurant owner the facilities to see all the details of the restaurant outlets they have enlisted.
+-   Restaurant owner should be able to create the menu details of the restaurant outlets by dish name and their prices.
+-   Restaurant owner should also be able to see the menu based on their outlet number/name individually.
 
 ### 5. Customer Functionalities
 
-5.1 Customer should be able to get the names of all the restaurant brands available in the application.
-5.2 Customer should be able to get the locations where the restaurants are available.
-5.3 Customer should be able to get the food items each restaurant offers.
-5.4 Customer should be able to search for restaurant details by restaurant name.
-5.5 Customer should be able to search for restaurants available in their location.
-5.6 Customer should be able to search for restaurants that provide a particular food item.
-5.7 Customer should be able to add more than one address in the application.
-5.8 Customer must provide state name, city, state, postal code, and country while creating an address.
-5.9 Customer should be able to update their address.
-5.10 Customer should be able to delete an address.
-5.11 Customer should be able to see all the addresses they have provided in the application.
-5.12 Customer should be able to order from a restaurant by providing the menu item and the number of quantities needed.
-5.13 Customer should be able to track their order status until the delivery is completed.
-5.14 Customer should be able to see the history of all their orders made through the application.
-5.15 Customer should be able to reorder a dish from a particular restaurant from their order history.
+-   Customer should be able to get the names of all the restaurant brands available in the application.
+-   Customer should be able to get the locations where the restaurants are available.
+-   Customer should be able to get the food items each restaurant offers.
+-   Customer should be able to search for restaurant details by restaurant name.
+-   Customer should be able to search for restaurants available in their location.
+-   Customer should be able to search for restaurants that provide a particular food item.
+-   Customer should be able to add more than one address in the application.
+-   Customer must provide state name, city, state, postal code, and country while creating an address.
+-   Customer should be able to update their address.
+-   Customer should be able to delete an address.
+-   Customer should be able to see all the addresses they have provided in the application.
+-   Customer should be able to order from a restaurant by providing the menu item and the number of quantities needed.
+-   Customer should be able to track their order status until the delivery is completed.
+-   Customer should be able to see the history of all their orders made through the application.
+-   Customer should be able to reorder a dish from a particular restaurant from their order history.
+
+### 6. Delivery Management Functionalities
+
+-   Application should be able to create a delivery request based on the user-ordered menu from a restaurant to their destination.
+-   Application should have the capability to list all the currently available deliveries that need to be processed or deliveries not completed yet.
+-   Application should have the capability of searching the delivery details based on the delivery ID.
+-   Application should have the capability of collecting the location of the restaurant owner.
+-   Application should have the capability of collecting the location of the delivery partner.
+-   Application should have the capability of collecting the location of the customer who has requested the order.
+-   Application should assign a delivery partner whose location is within a 5 km radius of the restaurant.
+-   Application should prevent assigning a repeat or another order to a delivery agent who has already accepted an order.
+-   Till the order is delivered, the application should be able to continuously track the delivery agent's location.
+-   After the delivery, the customer should be able to rate the order.
+-   Customer should be able to raise a dispute if any delivery issue or food-related issue is faced.
+-   Application should have the capability to track the dispute details and dispute progress.
+-   Application should be able to update the dispute resolution to the customer.
+
+### 7. Administrator Functionalities
+
+-   Admin should have the list of all the users who are enrolled on the platform.
+-   Admin should be able to update customer, restaurant, and delivery agent details whenever technical failure occurs and they are not able to do it respectively.
+-   Admin should be able to view all the orders that have been created from the inception.
+-   Admin should be able to provide the order-related details whenever a high-level request comes.
+-   Admin should be able to update the order details after the delivery is completed.
+-   Admin can filter the orders based on the status.
+-   Admin should be able to provide the details of the restaurant and dish which have been topping the chart for weeks, months, quarters, and years.
+-   Admin can also update the dispute resolution details for deliveries with issues or complaints.
 
 ## Deployment
 
@@ -235,6 +262,10 @@ Application is deployed on https://www.heroku.com
 ## Api documentation
 
 https://documenter.getpostman.com/view/37944880/2sAYBPmEH3
+
+![Postman All Api Documentation](assets/postman_api_documentation.png)
+[Swagger Delivery Service Documentation](./docs/swagger.yaml)
+![Swagger Delivery Service Documentation](assets/swagger_delivery_service_documentation.png)
 
 ## ERD
 
