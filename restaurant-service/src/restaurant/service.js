@@ -9,12 +9,9 @@ const createRestaurant = async (data) => {
     }
 };
 
-const addFoodItems = async (restaurant_id, foodItems) => {
+const addFoodItems = async (foodItems) => {
     try {
-        return await restaurantRepository.addFoodItems(
-            restaurant_id,
-            foodItems
-        );
+        return await restaurantRepository.addFoodItems(foodItems);
     } catch (error) {
         console.error("Error in addFoodItems service:", error);
         throw new Error("Error adding food items");

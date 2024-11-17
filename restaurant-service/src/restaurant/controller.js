@@ -17,10 +17,7 @@ const addFoodItems = async (req, res) => {
     const foodItems = req.body.menu;
 
     try {
-        await restaurantService.addFoodItems(
-            parseInt(restaurant_id),
-            foodItems
-        );
+        await restaurantService.addFoodItems(foodItems);
         res.status(201).json({ message: "Menu added successfully" });
     } catch (error) {
         console.error("Error adding menu:", error);

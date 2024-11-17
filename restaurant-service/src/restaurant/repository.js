@@ -16,10 +16,10 @@ const createRestaurant = async (data) => {
 };
 
 // Function to add food items to a specific restaurant by restaurant_id
-const addFoodItems = async (restaurant_id, foodItems) => {
+const addFoodItems = async (foodItems) => {
     return await FoodItem.createMany({
         data: foodItems.map((item) => ({
-            restaurant_id: restaurant_id,
+            restaurant_id: item.restaurant_id,
             name: item.name,
             price: item.price,
         })),
