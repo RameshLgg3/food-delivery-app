@@ -181,8 +181,10 @@ Application is deployed on https://www.heroku.com
 
 ## Demo video url
 
-- **Admin Service:** [Video Link](https://drive.google.com/file/d/1c5yE9vjUAgDp-ULoIsikex0Gn1fh4T6W/view?usp=sharing)
-- **Delivery Service:** [Video Link](https://wilpbitspilaniacin0-my.sharepoint.com/:v:/g/personal/2023mt93398_wilp_bits-pilani_ac_in/EUThwQQzKolFhiL5Y37oFIcBXZqNVJgzZFF4sTMQdb7SIw?e=o8MSiS)
+-   **App demo:** [Video Link](https://drive.google.com/file/d/1WppCSptxJqM2-OlnN2fJGtzwGq6soC4q/view?usp=drive_link)
+
+-   **Admin Service:** [Video Link](https://drive.google.com/file/d/1c5yE9vjUAgDp-ULoIsikex0Gn1fh4T6W/view?usp=sharing)
+-   **Delivery Service:** [Video Link](https://wilpbitspilaniacin0-my.sharepoint.com/:v:/g/personal/2023mt93398_wilp_bits-pilani_ac_in/EUThwQQzKolFhiL5Y37oFIcBXZqNVJgzZFF4sTMQdb7SIw?e=o8MSiS)
 
 ## Api documentation
 
