@@ -19,7 +19,7 @@ const authenticateToken = (req, res, next) => {
 
         console.log(user)
 
-        if(user.userType !== 'deliveryagent') {
+        if(user.role !== 'DELIVERYAGENT') {
             return res
                 .status(403)
                 .json({ message: "Access Denied: Not a delivery agent" }); // Forbidden

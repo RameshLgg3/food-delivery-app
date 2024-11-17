@@ -1,6 +1,7 @@
 // src/customer/routes.js
 const express = require("express");
 const orderController = require("./controller");
+const addressController = require("./addressController");
 const { authenticateToken, authorizeRoles } = require("./middleware");
 
 const router = express.Router();
@@ -29,5 +30,11 @@ router.get("/restaurants", orderController.fetchRestaurants);
 router.get("/restaurants/search", orderController.searchRestaurants);
 router.get("/menu/search", orderController.searchMenu);
 router.post("/orders/:order_number/reorder", orderController.reOrder);
+
+router.post("/addresses", addressController.createAddress);
+router.get("/addresses", addressController.getAllAddresses);
+router.get("/addresses/:id", addressController.getAddressById);
+router.put("/addresses/:id", addressController.updateAddress);
+router.delete("/addresses/:id", addressController.deleteAddress);
 
 module.exports = router;

@@ -3,6 +3,7 @@ const {createDeliveryValidation, updateDeliveryValidation, createReviewValidatio
     updateDisputeValidation
 } = require("../common/validation");
 const {HTTP_SUCCESS, HTTP_BAD_REQUEST} = require("../common/http_error");
+const {updateLocation} = require("../locationServices/repository");
 exports.getDeliveryController = async (req, res) => {
     let searchKey = "deliveryid"
     // Validate request data
@@ -35,7 +36,17 @@ exports.createDeliveryController = async (req, res) => {
     try {
         const result = await createDelivery(req.body).catch((err) => {
             console.log(err)
+            return res
+                .status(HTTP_BAD_REQUEST)
+                .json({ status:false,  message: "Failed to create delivery details" });
         });
+
+        location = req.body.destination.split(",")
+        console.log(location)
+        await updateLocation(location[0], location[1], "ORDER:"+req.body.orderId).catch((err) => {
+            console.log(err)
+        })
+
         return res
             .status(HTTP_SUCCESS)
             .json({ status: true, message: "Successfully created the delivery details", data: result });

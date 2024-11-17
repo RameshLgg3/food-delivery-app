@@ -1,5 +1,5 @@
 // src/customer/repository.js
-const { Order, OrdersMenu } = require("./model");
+const { Order, OrdersMenu, Address } = require("./model");
 
 class OrderRepository {
     async createOrder(orderData) {
@@ -41,6 +41,26 @@ class OrderRepository {
             where: { order_number },
             include: { orders_menu: true }, // Include order items (if needed)
         });
+    }
+
+    async createAddress(data) {
+        return Address.create({ data });
+    }
+
+    async getAllAddresses() {
+        return Address.findMany();
+    }
+
+    async getAddressById(id) {
+        return Address.findUnique({ where: { id } });
+    }
+
+    async updateAddress(id, data) {
+        return Address.update({ where: { id }, data });
+    }
+
+    async deleteAddress(id) {
+        return Address.delete({ where: { id } });
     }
 }
 
